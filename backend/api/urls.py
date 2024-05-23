@@ -16,4 +16,11 @@ urlpatterns = [
     path("todo/<user_id>/", views.TodoListView.as_view()),
     path("todo-detail/<user_id>/<todo_id>/", views.TodoDetailView.as_view()),
     path("todo-mark-as-completed/<user_id>/<todo_id>/", views.TodoMarkAsCompleted.as_view()),
+    
+    #Chat urls
+    path("my-messages/<user_id>", views.MyInbox.as_view()),
+    path("get-messages/<sender_id>/<reciever_id>", views.GetMessage.as_view()),
+    path('send-messages/', views.SendMessage.as_view()), 
+    path('profile/<int:pk>/', views.ProfileDetail.as_view()), 
+    path('search/<username>/', views.SearchUser.as_view()),
 ]

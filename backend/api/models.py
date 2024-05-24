@@ -64,6 +64,6 @@ class ChatMessage(models.Model):
         return sender_profile 
     
     @property 
-    def reviever_profile(self): 
+    def reciever_profile(self): 
         reciever_profile = Profile.objects.get(user=self.reciever)
         return reciever_profile

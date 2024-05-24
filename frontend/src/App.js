@@ -10,6 +10,7 @@ import Loginpage from './views/Loginpage'
 import Dashboard from './views/Dashboard'
 import Navbar from './views/Navbar'
 import Todo from './views/Todo'
+import Message from './views/Message'
 
 
 
@@ -17,9 +18,10 @@ function App() {
   return (
     <Router>
       <AuthProvider>
-        < Navbar/>
+          < Navbar/>
         <Switch>
           <PrivateRoute component={Dashboard} path="/dashboard" exact />
+          <PrivateRoute component={Message} path="/inbox" exact />
           <Route component={Loginpage} path="/login" />
           <Route component={Registerpage} path="/register" exact />
           <Route component={Homepage} path="/" exact />

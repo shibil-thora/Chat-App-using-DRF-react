@@ -132,7 +132,7 @@ class GetMessage(generics.ListAPIView):
 class SendMessage(generics.CreateAPIView): 
     serializer_class = ProfileSerializer
     queryset = Profile.objects.all() 
-    permission_classes = [IsAuthenticated]
+    #permission_classes = [IsAuthenticated]
 
 
 class ProfileDetail(generics.RetrieveAPIView): 

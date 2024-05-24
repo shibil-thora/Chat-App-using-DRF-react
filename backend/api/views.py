@@ -13,6 +13,7 @@ from rest_framework import generics
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
+from rest_framework.views import APIView
 
 
 class MyTokenObtainPairView(TokenObtainPairView):
@@ -115,18 +116,13 @@ class MyInbox(generics.ListAPIView):
         return messages
     
 
-class GetMessage(generics.ListAPIView): 
-    serializer_class = ChatMessage 
-
-    def get_queryset(self): 
-        sender_id = self.kwargs['sender_id']
-        reciever_id = self.kwargs['reciever_id'] 
-
+class GetMessage(APIView): 
+    def get(self, request, sender_id, reciever_id): 
         messages = ChatMessage.objects.filter(
             sender__in=[sender_id, reciever_id], 
             reciever__in=[sender_id, reciever_id]
         ) 
-        return messages 
+        return Response(MessageSerializer(messages, many=True).data)
     
 
 class SendMessage(generics.CreateAPIView): 

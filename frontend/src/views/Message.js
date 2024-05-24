@@ -3,6 +3,7 @@ import './style/Message.css'
 import useAxios, { baseURL } from '../utils/useAxios.js'
 import jwtDecode from 'jwt-decode';
 import moment from 'moment'
+import { Link } from 'react-router-dom';
 
 function Message() {
     const [messages, setMessages] = useState([]); 
@@ -38,8 +39,7 @@ function Message() {
                     </div>
                 </div>
                 {messages.map((message) => (
-                    <a
-                    href="#"
+                    <Link to={'/inbox/' + message.sender}
                     className="list-group-item list-group-item-action border-0"
                     >
                     <div className="badge bg-success float-right text-white">
@@ -68,7 +68,7 @@ function Message() {
                         </div>
                     </div>
                     </div>
-                </a>
+                </Link>
                 ))}
                
                 <hr className="d-block d-lg-none mt-1 mb-0" />

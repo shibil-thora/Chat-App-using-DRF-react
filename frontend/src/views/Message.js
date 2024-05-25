@@ -126,6 +126,7 @@ function Message() {
                         </svg>
                         </button>
                         <button className="btn btn-light border btn-lg px-3">
+                            
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width={24}

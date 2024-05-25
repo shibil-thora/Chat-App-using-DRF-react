@@ -50,7 +50,7 @@ function MessageDetail() {
                     </div>
                 </div>
                 {messages.map((message) => (
-                    <Link to={'/inbox/' + message.sender}
+                    <Link to={`/inbox/${message.sender === user_id ? message.reciever : message.sender}/`}
                     className="list-group-item list-group-item-action border-0"
                     >
                     <div className="badge bg-success float-right text-white">
@@ -173,7 +173,7 @@ function MessageDetail() {
                                   height={40}
                               />
                               <div className="text-muted small text-nowrap mt-2">
-                                  2:33 am
+                              {moment.utc(message.date).local().startOf('seconds').fromNow()}
                               </div>
                               </div>
                               <div className="flex-shrink-1 bg-light rounded py-2 px-3 mr-3">
@@ -193,7 +193,7 @@ function MessageDetail() {
                                  height={40}
                              />
                              <div className="text-muted small text-nowrap mt-2">
-                                 2:34 am
+                             {moment.utc(message.date).local().startOf('seconds').fromNow()}
                              </div>
                              </div>
                              <div className="flex-shrink-1 bg-light rounded py-2 px-3 ml-3">
